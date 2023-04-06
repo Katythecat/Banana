@@ -29,13 +29,17 @@ public class Login extends CommonMethods {
     }
     @When("enter valid username and password")
     public void enter_valid_username_and_password() {
-        driver.findElement(By.id("txtUsername")).sendKeys(ConfigReader.getPropValue("username"));
-        driver.findElement(By.id("txtPassword")).sendKeys(ConfigReader.getPropValue("password"));
+        //driver.findElement(By.id("txtUsername")).sendKeys(ConfigReader.getPropValue("username"));
+        WebElement userName=driver.findElement(By.id("txtUsername"));
+        CommonMethods.sendText(userName,ConfigReader.getPropValue("username"));
+        //driver.findElement(By.id("txtPassword")).sendKeys(ConfigReader.getPropValue("password"));
+        WebElement password=driver.findElement(By.id("txtPassword"));
+        CommonMethods.sendText(password,ConfigReader.getPropValue("password"));
 
     }
     @When("click on login button")
     public void click_on_login_button() {
-        driver.findElement(By.id("btnLogin")).click();
+        doClick(driver.findElement(By.id("btnLogin")));
 
     }
     @Then("user login successfully")
